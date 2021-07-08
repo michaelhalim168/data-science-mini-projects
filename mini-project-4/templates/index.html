@@ -9,7 +9,57 @@
     <h3>Fill in the following values to predict your loan status!</h3>
 
     <form action="{{ url_for('predict')}}" method="POST">
-        <input type="text" name="total_income" placeholder="Total Income" required="required" />
+        <label>Select Gender:
+            <input list="gender" name="Gender" /></label>
+            <datalist id="gender">
+              <option value="Male">
+              <option value="Female">
+            </datalist>
+         <label>Select Education:
+            <input list="education" name="Education" /></label>
+            <datalist id="education">
+              <option value="Graduate">
+              <option value="No Graduate">
+            </datalist>
+         <label>Select No. Dependents:
+            <input list="dependents" name="Dependents"/></label>
+            <datalist id="dependents">
+                <option value="0">
+                <option value="1">
+                <option value="2">
+                <option value="3+">
+            </datalist>
+        <br>
+        <br>
+        <label>Select Marriage Status:
+            <input list="marriage" name="Marriage"/></label>
+            <datalist id="marriage">
+                <option value="Yes">
+                <option value="No">
+            </datalist>
+        <label>Self Employed:
+            <input list="employed" name="Employed"/></label>
+            <datalist id="employed">
+                <option value="Yes">
+                <option value="No">
+            </datalist>
+        <label>Select Credit History:
+            <input list="credit" name="Credit"/></label>
+            <datalist id="credit">
+                <option value="Yes">
+                <option value="No">
+            </datalist>
+        <label>Select Property Area:
+            <input list="property" name="Property"/></label>
+            <datalist id="property">
+                <option value="Urban">
+                <option value="Rural">
+                <option value="Semiurban">
+            </datalist>
+        <br>
+        <br>
+        <input type="text" name="applicant_income" placeholder="Income" required="required" />
+        <input type="text" name="coapp_income" placeholder="Co-applicant Income" required="required" />
         <input type="text" name="loan_term" placeholder="Loan Term" required="required" />
 		<input type="text" name="loan_amount" placeholder="Loan Amount" required="required" />
 
