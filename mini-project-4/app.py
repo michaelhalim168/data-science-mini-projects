@@ -2,10 +2,12 @@ import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request
 import pickle
+from transformers import *
 
 
 app = Flask(__name__)
-model = pickle.load(open("testmodel.p", "rb"))
+model = pickle.load(open("../output/logregmodel_balanced.sav", "rb"))
+
 columns = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed',
             'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term',
             'Credit_History', 'Property_Area']
@@ -34,20 +36,14 @@ def predict():
     
     df = pd.DataFrame([data], columns=columns)
 
-    df['total_income'] = df['ApplicantIncome'] + df['CoapplicantIncome']
-    df.drop(['ApplicantIncome', 'CoapplicantIncome'], axis=1, inplace=True)
-
-    df['total_income'] = np.log10(df['total_income'])
-    df['LoanAmount'] = np.log10(df['LoanAmount'])
-
     prediction = model.predict(df)
 
     if prediction == float(1):
-        output = 'Approved'
+        output = 'approved!'
     elif prediction == float(0):
-        output = 'Not Approved'
+        output = 'not approved.'
 
-    return render_template("index.html", prediction_text= 'Answer: {}'.format(output))
+    return render_template("index.html", prediction_text= 'Your loan is most likely {}'.format(output))
 
 if __name__ == '__main__':
     app.debug = True
