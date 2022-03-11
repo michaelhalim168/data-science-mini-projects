@@ -1,6 +1,4 @@
-# Lighthouse Labs Mini-Projects
-
-Repository containing mini-projects completed at Lighthouse Labs Data Science Bootcamp.
+# Data Science Projects
 
 ## Mini-Project 1: Transport of London API, TMDB Movie API
 This project involved extracting information from London's Transport API and TMDB Movie API to answer some important questions. This mini-project serves as an exercise to practice Python for data science and APIs.
